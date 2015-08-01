@@ -6,7 +6,7 @@ object CSVReader {
   
   def main(args: Array[String]): Unit = {
 
-    val src = Source.fromFile("/home/hashem/workspace/scala_reader/resources/test.csv").getLines().toList
+    val src = Source.fromURL(getClass().getResource("/test.csv")).getLines().toList
     val zones = src.head.split(',').toList.drop(1)
     val parsedData = src.tail.toList.map(x => (x.split(',').toList)).map(x => (x.head , zones.zip(x.tail))).foreach{ dataItem =>
       dataItem._2.foreach{ zRate =>
